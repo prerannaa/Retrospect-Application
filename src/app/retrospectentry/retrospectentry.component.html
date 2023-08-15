@@ -1,0 +1,145 @@
+<!-- <p-button (click)="showDialogMethod()" icon="pi pi-external-link" label="Show"></p-button>
+<p-dialog header="Header" [(visible)]="showDialog" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
+    <p class="m-0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+    </p>
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="Close" (click)="hideDialog()"></button>
+    </p-footer>
+</p-dialog> -->
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand">Navbar</a>
+      <button class="btn btn-outline-success my-5 my-sm-0" type="submit">Logout</button>
+  </nav>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card-box">
+                    <h4 class="text-dark header-title">What Worked Well</h4>
+
+                    <p-button (click)="showWentWellDialogs()"  class="btn btn-custom btn-block mt-3 waves-effect waves-light" label="Add Note"><i
+                        class="fa fa-plus-circle"></i> </p-button>
+                    <p-dialog header="Header" [(visible)]="showWentWellDialog" [modal]="true" [style]="{ width: '50vw' }"
+                        [draggable]="false" [resizable]="false">
+                        <p class="m-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                            officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type="text">
+                        <p-footer>
+                            <button type="button" pButton icon="pi pi-times" label="Close"
+                                (click)="hideWentWellDialogs()"></button>
+                        </p-footer>
+                    </p-dialog>     
+
+                    <!-- <a href="#" class="btn btn-custom btn-block mt-3 waves-effect waves-light"><i
+                            class="fa fa-plus-circle"></i> Add New</a> -->
+                    <ul class="sortable-list taskList list-unstyled ui-sortable" id="upcoming">
+                        <li class="task-warning ui-sortable-handle" id="task1">
+                            When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="task-success ui-sortable-handle" id="task2">
+                            Many desktop publishing packages and web page editors now use Lorem.
+                            <div class="clearfix"></div>
+                        </li>
+                        <li id="task3" class="ui-sortable-handle">
+                            If you are going to use a passage of Lorem Ipsum..
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="task-info ui-sortable-handle" id="task4">
+                            It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                            old.
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-box">
+                    <h4 class="text-dark header-title">What Didn't Went Well</h4>
+                    <p-button (click)="showDidntWentWellDialogs()" icon="pi pi-external-link"  class="btn btn-custom btn-block mt-3 waves-effect waves-light" label="Add Note"><i
+                        class="fa fa-plus-circle"></i> </p-button>
+                    <p-dialog header="Header" [(visible)]="showDidntWentWellDialog" [modal]="true" [style]="{ width: '50vw' }"
+                        [draggable]="false" [resizable]="false">
+                        <p class="m-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                            officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p-footer>
+                            <button type="button" pButton icon="pi pi-times" label="Close"
+                                (click)="hideDidntWentWellDialogs()"></button>
+                        </p-footer>
+                    </p-dialog>  
+                    <!-- <a href="#" class="btn btn-custom btn-block mt-3 waves-effect waves-light"><i
+                            class="fa fa-plus-circle"></i> Add New</a> -->
+                    <ul class="sortable-list taskList list-unstyled ui-sortable" id="inprogress">
+                        <li id="task9" class="ui-sortable-handle">
+                            If you are going to use a passage of Lorem Ipsum..
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="task-info ui-sortable-handle" id="task10">
+                            It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                            old.
+                            <div class="clearfix"></div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-box">
+                    <h4 class="text-dark header-title">Action Item</h4>
+                    <p-button (click)="showActionItemDialogs()" icon="pi pi-external-link"  class="btn btn-custom btn-block mt-3 waves-effect waves-light" label="Add Note"><i
+                        class="fa fa-plus-circle"></i> </p-button>
+                    <p-dialog header="Header" [(visible)]="showActionItemDialog" [modal]="true" [style]="{ width: '50vw' }"
+                        [draggable]="false" [resizable]="false">
+                        <p class="m-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                            officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p-footer>
+                            <button type="button" pButton icon="pi pi-times" label="Close"
+                                (click)="hideActionItemDialogs()"></button>
+                        </p-footer>
+                    </p-dialog>  
+                    <ul class="sortable-list taskList list-unstyled ui-sortable" id="completed">
+                        <li class="task-warning ui-sortable-handle" id="task14">
+                            When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            <div class="clearfix"></div>
+                        </li>
+                        <li class="task-success ui-sortable-handle" id="task15">
+                            Many desktop publishing packages and web page editors now use Lorem.
+                            <div class="clearfix"></div>
+                        </li>
+                        <li id="task16" class="ui-sortable-handle">
+                            If you are going to use a passage of Lorem Ipsum..
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end row  -->
+    </div>
+    <!-- container -->
+</div>
