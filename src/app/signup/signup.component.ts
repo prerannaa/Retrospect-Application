@@ -21,7 +21,8 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.email], 
+      // email: new FormControl('',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       username: ['', Validators.required],
       password: ['', Validators.required],
     })
@@ -38,7 +39,7 @@ export class SignupComponent implements OnInit {
           // alert(res.message);
           this.toastr.success(res.message);
           this.signupForm.reset();
-          this.router.navigate(['login'])
+          this.router.navigate(['/'])
         },
         error: (err) =>{
           this.toastr.error(err?.error.message);

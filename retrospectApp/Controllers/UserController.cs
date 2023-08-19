@@ -38,9 +38,11 @@ public class UserController : ControllerBase
     {
       return BadRequest(new { Message = "Password is incorrect" });
     }
+    users.Token = CreateJwt(users);
 
     return Ok(new
       {
+        Token = users.Token,
         Message = "Login Success!"
       });
   }
@@ -94,16 +96,32 @@ public class UserController : ControllerBase
   private Task<bool> CheckEmailExistAsync(string email)
   => _Context.Users.AnyAsync(x => x.Email == email);
 
-  private string CreateJwt(User user)
+  private string CreateJwt(User users)
   {
     var jwtTokenHandler = new JwtSecurityTokenHandler();
     var key = Encoding.ASCII.GetBytes("verysceret........");
     var identity = new ClaimsIdentity(new Claim[]
     {
-      new Claim(ClaimTypes.Role, user.Role),
-      new Claim(ClaimTypes.Name,$"{user.Firstname} {user.Lastname}")
+      new Claim(ClaimTypes.Role, users.Role),
+      new Claim(ClaimTypes.Name,$"{users.Firstname} {users.Lastname}")
     });
+
+    var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+
+    var tokenDescriptor = new SecurityTokenDescriptor
+    {
+      Subject = identity,
+      Expires = DateTime.Now.AddDays(1),
+      SigningCredentials = credentials
+    };
+
+    var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+    return jwtTokenHandler.WriteToken(token);
   }
+/*  public async Task<ActionResult<User>> GetAllUsers()
+  {
+    return Ok(await _Context.Users.ToListAsync());
+  }*/
 
 }
 

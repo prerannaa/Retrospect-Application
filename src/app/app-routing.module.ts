@@ -5,8 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { RetrospectentryComponent } from './retrospectentry/retrospectentry.component';
 
 const routes: Routes = [
+  {path:'', component: LoginComponent},
   {path:'signup',component: SignupComponent},
-  {path:'login', component: LoginComponent},
   {path:'dashboard', component: RetrospectentryComponent},
 ];
 

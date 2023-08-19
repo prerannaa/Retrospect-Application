@@ -34,7 +34,13 @@
                                             <input formControlName="email" type="email" id="form3Example4c" class="form-control" placeholder="Email"/>
                                         </div>
                                     </div>
-                                    <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')" class="text-danger" style="color: red;">Email is required</small>
+                                    <!-- <div *ngIf="(signupForm.get('email')?.invalid && signupForm.get('email')?.touched) || signupForm.get('email')?.dirty">
+                                        <small *ngIf="signupForm.get('email')?.errors?.['pattern']" class="text-danger">Please enter valid email address</small>
+                                      </div> -->
+                                    <div *ngIf="(signupForm.get('email')?.invalid && signupForm.get('email')?.touched) || signupForm.get('email')?.dirty">
+                                        <small *ngIf="signupForm.get('email')?.errors?.['email']" class="text-danger">Please enter valid email address</small>
+                                      </div>
+                                    <!-- <small *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required','email')" class="text-danger" style="color: red;">Email is required</small> -->
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -53,7 +59,7 @@
                                     <small *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required','password')" class="text-danger" style="color: red;">Password is required</small>
 
                                     <div class="form-check d-flex justify-content-center mb-5">
-                                        <div class="text-center pt-4 text-muted">Already have an account?<a href="forget" routerLink="/login">Login</a></div>
+                                        <div class="text-center pt-4 text-muted">Already have an account?<a href="forget" routerLink="/">Login</a></div>
                                     </div>
 
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

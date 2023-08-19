@@ -1,25 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using retrospectApp;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
-
-// Add services to the container.
-builder.Services.AddAuthentication(x =>
-{
-
-  x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-  x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-  x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-  x.TokenValidationParameters = new TokenValidationParameters
-  {
-
-  };
-});
 
 
 builder.Services.AddControllers();
@@ -40,6 +27,25 @@ builder.Services.AddCors(
 builder.Services.AddDbContext<RetrospectAppDbContext>(option =>
 {
   option.UseSqlServer(builder.Configuration.GetConnectionString("RetroAppConnStr"));
+});
+
+// Add services to the container.
+
+builder.Services.AddAuthentication(x =>
+{
+  x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+  x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+  x.RequireHttpsMetadata = false;
+  x.SaveToken = true;
+  x.TokenValidationParameters = new TokenValidationParameters
+  {
+    ValidateIssuerSigningKey = true,
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("verysceret........")),
+    ValidateAudience = false,
+    ValidateIssuer = false,
+  };
 });
 
 var app = builder.Build();
